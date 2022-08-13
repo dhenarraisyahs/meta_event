@@ -17,7 +17,7 @@ class CreateTableAttendances extends Migration
             $table->bigIncrements('id');
             $table->integer('location_id');
             $table->integer('participant_id');
-            $table->date('date');
+            $table->timestamp('date')->useCurrent();
             $table->timestamps();
         });
     }
