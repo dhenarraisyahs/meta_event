@@ -15,7 +15,7 @@
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col-8">
-                            <h3 class="mb-0">Event Management</h3>
+                            <h3 class="mb-0">Location Management</h3>
                         </div>
                         <div class="col-4 text-right">
                             {{-- <a href="{{ route('event.create') }}" class="btn btn-sm btn-primary">Add Data</a> --}}
@@ -35,8 +35,6 @@
                             <tr>
                                 <th scope="col">No.</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Date</th>
-                                <th scope="col">Is Active?</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -105,18 +103,6 @@
                         <input type="text" class="form-control" id="name" name="name"
                             value="{{ old('name') }}" maxlength="50" >
                     </div>
-                    <div class="form-group">
-                        <label for="logo" class=" form-control-label">Date</label>
-                        <input type="date" class="form-control" id="date" name="date"
-                            value="{{ old('date') }}">
-                    </div>
-                    <div class="form-group">
-                        <label for="is_active" class=" form-control-label">Is Active</label>
-                        <select name="is_active" id="is_active" class="form-control">
-                            <option value="1">Active</option>
-                            <option value="0">Inactive</option>
-                        </select>
-                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -141,7 +127,7 @@
         var table = $('#bootstrap-data-table').DataTable({
                         processing: true,
                         //serverSide: false,
-                        ajax: '{!! route('event.list') !!}',
+                        ajax: '{!! route('location.list') !!}',
                         columns: [
                                 {
                                     data: 'id', 
@@ -151,14 +137,6 @@
                                     data: 'name', 
                                     name: 'name'
                                 }, 
-                                {
-                                    data: 'date', 
-                                    name: 'date'
-                                },           
-                                {
-                                    data: 'is_active', 
-                                    name: 'is_active'
-                                },
                                 {
                                     data: 'action', 
                                     name: 'action'
@@ -174,14 +152,12 @@
 
         $('body').on('click', '.editRecord', function () {
             var id = $(this).data('id');
-            $.get('event/' + id +'/edit', function (data) {
+            $.get('location/' + id +'/edit', function (data) {
                 $('#smallmodalLabel').html("Edit Data");
                 $('#saveBtn').val("edit-data");
                 $('#createModal').modal('show');
                 $('#id').val(data.id);
                 $('#name').val(data.name);
-                $('#date').val(data.date);
-                $('#is_active').val(data.is_active);
             })
         });
 
@@ -191,7 +167,7 @@
             var formData = new FormData($('#CreateForm')[0]);
             $.ajax({
             data: $('#CreateForm').serialize(),
-            url: "{!! route('event.store') !!}",
+            url: "{!! route('location.store') !!}",
             type: "POST",
             data: formData,
             dataType: 'json',
@@ -221,7 +197,7 @@
 
             $.ajax({
             type: "DELETE",
-            url: "event/"+id,
+            url: "location/"+id,
             
             success: function (data) {
                 table.ajax.reload();

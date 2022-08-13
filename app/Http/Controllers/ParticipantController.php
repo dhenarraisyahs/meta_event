@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Event;
+use App\Models\Participant;
 // use App\Http\Controllers\DataTables;
 use Yajra\DataTables\Contracts\DataTable;
 use Illuminate\Http\Request;
 
-class EventController extends Controller
+class ParticipantController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,9 +21,9 @@ class EventController extends Controller
     
     public function index()
     {
-        $events = Event::all();
-        return view('event.index')->with([
-            'events' => $events
+        $participants = Participant::all();
+        return view('Participant.index')->with([
+            'participants' => $participants
         ]);
     }
 
@@ -31,7 +31,7 @@ class EventController extends Controller
     {
         // dd('masuk fungsi');
         if ($request->ajax()) {
-            $data = Event::all();
+            $data = Participant::all();
             // dd($data);
             return \DataTables::of($data)
                 ->addIndexColumn()
@@ -43,13 +43,8 @@ class EventController extends Controller
                     // $btn = $btn . '<a href="' . route('program.show', $row->id) . '" class="view btn btn-warning btn-sm mx-2">Undi Hadiah</a>';
                     return $btn;
                 })
-                ->editColumn('is_active', function ($row) {
-
-                    $types = array("-" => "-", "1" => "Aktif", "0" => "Tidak Aktif");
-                    $stat = $row->is_active == null ? '-' : $row->is_active;
-                    // $field = '<span class="badge '. $arr_badge[$status] .'">'. $conditions[$status] .'</span>';
-                    $field = $types[$stat];
-                    return $field;
+                ->editColumn('location', function ($row) {
+                    return $row->location->name;
                 })
                 ->rawColumns(['action'])
                 ->make(true);
@@ -74,14 +69,13 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        Event::updateOrCreate(
+        Participant::updateOrCreate(
             [
                 'id' => $request->id
             ],
             [
-                'name' => $request->name,
-                'date' => $request->date,
-                'is_active' => $request->is_active
+                'event_id' => 1,
+                'name' => $request->name
             ]
         );
 
@@ -96,7 +90,8 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        //
+        $participant = Participant::find($id);
+        return response()->json($participant);
     }
 
     /**
@@ -107,8 +102,8 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        $event = Event::find($id);
-        return response()->json($event);
+        $participant = Participant::find($id);
+        return response()->json($participant);
     }
 
     /**
@@ -132,7 +127,7 @@ class EventController extends Controller
     public function destroy($id)
     {
         
-        Event::find($id)->delete();
+        Participant::find($id)->delete();
 
         return response()->json(['success' => 'Data deleted!']);
     }
