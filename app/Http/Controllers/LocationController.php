@@ -19,7 +19,6 @@ class LocationController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
     }
     
     public function index()
@@ -74,20 +73,7 @@ class LocationController extends Controller
             return \DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    if ($row->undangan > 0) {
-                        $percent = ($row->hadir / $row->undangan) * 100;
-                        $btn = '<div class="d-flex align-items-center">
-                                <span class="mr-2">'.$percent.'%</span>
-                                <div>
-                                <div class="progress">
-                                    <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="'.$percent.'" aria-valuemin="0" aria-valuemax="100" style="width: '.$percent.'%;"></div>
-                                    </div>
-                                </div>
-                            </div>';
-                    } else {
-                        $btn = '';
-                    }
-                    return $btn;
+                    return $row->undangan - $row->hadir;
                 })
                 ->rawColumns(['action'])
                 ->make(true);

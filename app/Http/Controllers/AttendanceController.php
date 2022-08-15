@@ -17,13 +17,13 @@ class AttendanceController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+
     }
     
     public function index()
     {
         $attendances = Attendance::all();
-        return view('Attendance.index')->with([
+        return view('attendance.index')->with([
             'attendances' => $attendances
         ]);
     }
@@ -152,7 +152,7 @@ class AttendanceController extends Controller
 
     public function check_in_form($location_id)
     {
-        return view('Attendance.check_in_form')->with([
+        return view('attendance.check_in_form')->with([
             'location_id' => $location_id
         ]);
     }
@@ -160,7 +160,7 @@ class AttendanceController extends Controller
     public function check_in_result($id)
     {
         $attendance = Attendance::find($id);
-        return view('Attendance.check_in_result')->with([
+        return view('attendance.check_in_result')->with([
             'attendance' => $attendance
         ]);
     }

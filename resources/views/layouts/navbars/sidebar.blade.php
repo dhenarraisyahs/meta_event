@@ -6,7 +6,8 @@
         </button>
         <!-- Brand -->
         <a class="navbar-brand pt-0" href="{{ route('home') }}">
-            <img src="{{ asset('argon') }}/img/brand/blue.png" class="navbar-brand-img" alt="...">
+            <img src="{{ asset('img') }}/onevent.png" class="navbar-brand-img" alt="...">
+            <!-- <h1>ONEVENT</h1> -->
         </a>
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
@@ -54,7 +55,7 @@
                 <div class="row">
                     <div class="col-6 collapse-brand">
                         <a href="{{ route('home') }}">
-                            <img src="{{ asset('argon') }}/img/brand/blue.png">
+                            <img src="{{ asset('img') }}/onevent.png">
                         </a>
                     </div>
                     <div class="col-6 collapse-close">
@@ -83,11 +84,11 @@
                         <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard') }}
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="{{ route('event.index') }}">
                         <i class="ni ni-calendar-grid-58 text-green"></i> {{ __('Event') }}
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('location.index') }}">
                         <i class="ni ni-pin-3 text-grey"></i> {{ __('Location') }}

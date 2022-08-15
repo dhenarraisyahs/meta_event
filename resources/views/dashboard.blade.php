@@ -46,7 +46,7 @@
                                     <th scope="col">Lokasi</th>
                                     <th scope="col">Undangan</th>
                                     <th scope="col">Kehadiran</th>
-                                    <th scope="col"></th>
+                                    <th scope="col">Belum Hadi</th>
                                 </tr>
                             </thead>
                         </table>
@@ -97,7 +97,7 @@
 
             var tableAttendance = $('#tableAttendance').DataTable({
                         processing: true,
-                        // serverSide: false,
+                        // serverSide: true,
                         pageLength: 5,
                         lengthChange:false,
                         ajax: '{!! route('attendance.list') !!}',

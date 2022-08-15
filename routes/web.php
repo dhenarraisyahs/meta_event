@@ -14,8 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes();
+Route::get('check_in_form/{location_id}', 'AttendanceController@check_in_form')->name('attendance.check_in_form');
+Route::get('check_in_result/{attendance_id}', 'AttendanceController@check_in_result')->name('attendance.check_in_result');
+	
+Route::post('attendance/store', 'AttendanceController@store')->name('attendance.store');
 
+Route::get('/token', function () {
+	return csrf_token(); 
+});
+
+
+Route::get('/loaderio-5939001a80d6936f1af7a66be37b6d80', function () {
+	return 'loaderio-5939001a80d6936f1af7a66be37b6d80'; 
+});
+
+Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
 
@@ -41,9 +54,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('participant', 'ParticipantController');
 
 	Route::get('attendance/list', 'AttendanceController@data')->name('attendance.list');
-	Route::get('check_in_form/{location_id}', 'AttendanceController@check_in_form')->name('attendance.check_in_form');
-	Route::get('check_in_result/{attendance_id}', 'AttendanceController@check_in_result')->name('attendance.check_in_result');
-	Route::resource('attendance', 'AttendanceController');
 
 });
 

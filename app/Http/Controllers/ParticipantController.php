@@ -16,13 +16,12 @@ class ParticipantController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
     }
     
     public function index()
     {
         $participants = Participant::all();
-        return view('Participant.index')->with([
+        return view('participant.index')->with([
             'participants' => $participants
         ]);
     }

@@ -32,15 +32,15 @@
     
     <p style="text-align:center">&nbsp;</p>
 
-    <p style="text-align:center"><strong><span style="font-size:48px">Event Besar</span></strong></p>
+    <p style="text-align:center"><strong><span style="font-size:48px">Gathering Event</span></strong></p>
 
-    <p style="text-align:center"><span style="font-size:36px">Jakarta</span></p>
+    <p style="text-align:center"><span style="font-size:36px">{{ $location->name }}</span></p>
 
     <p style="text-align:center">&nbsp;</p>
 
     <p style="text-align:center"><span style="font-size:20px">Scan QR berikut</span></p>
 
-    <p style="text-align:center"><img alt="" src="https://chart.googleapis.com/chart?chs=300x300&amp;cht=qr&amp;chl=Hello%20world&amp;choe=UTF-8" style="height:300px; width:300px" /></p>
+    <p style="text-align:center"><img alt="" src="https://chart.googleapis.com/chart?chs=300x300&amp;cht=qr&amp;chl={{ $url }}&amp;choe=UTF-8" style="height:300px; width:300px" /></p>
 
   </body>
 
