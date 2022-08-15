@@ -4,7 +4,7 @@
         <!-- Brand -->
         <a class="h4 mb-0 text-black text-uppercase d-none d-lg-inline-block" href="{{ route('home') }}">{{ __('Dashboard') }}</a>
         <!-- Logo -->
-        <a class="align-items-center" href="{{ route('home') }}">
+        <a class="d-none d-xl-block d-lg-block d-xl-none d-md-block align-items-center" href="{{ route('home') }}">
             <img src="{{ asset('img') }}/logo-indosat.png" style="height: 96px;" class="navbar-brand-img" alt="...">
         </a>
         <!-- User -->
