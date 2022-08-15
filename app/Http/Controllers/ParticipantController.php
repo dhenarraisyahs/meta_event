@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Participant;
 // use App\Http\Controllers\DataTables;
 use Yajra\DataTables\Contracts\DataTable;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class ParticipantController extends Controller
@@ -50,6 +51,49 @@ class ParticipantController extends Controller
         }
     }
 
+
+    public function statistic(Request $request)
+    {
+        if ($request->ajax()) {
+            if (!empty($request->location_id)) {
+                $data = DB::select("SELECT a.title, undangan, hadir  FROM (
+                    SELECT title, COUNT(DISTINCT(attendances.participant_id))  hadir
+                    FROM participants
+                    LEFT JOIN attendances ON participants.id = attendances.participant_id
+                    WHERE participants.location_id = ?
+                    GROUP BY participants.title
+                ) a
+                JOIN (
+                    SELECT title, COUNT(participants.id) undangan
+                    FROM participants
+                    WHERE location_id = ?
+                    GROUP BY participants.title
+                ) b ON a.title = b.title", [$request->location_id, $request->location_id]);
+            } else {
+                $data = DB::select("SELECT a.title, undangan, hadir  FROM (
+                    SELECT title, COUNT(DISTINCT(attendances.participant_id))  hadir
+                    FROM participants
+                    LEFT JOIN attendances ON participants.id = attendances.participant_id
+                    GROUP BY participants.title
+                ) a
+                JOIN (
+                    SELECT title, COUNT(participants.id) undangan
+                    FROM participants
+                    GROUP BY participants.title
+                ) b ON a.title = b.title");
+            }
+           
+            // dd($data);
+            return \DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function ($row) {
+                    return $row->undangan - $row->hadir;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
+    }
     /**
      * Show the form for creating a new resource.
      *

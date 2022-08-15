@@ -20,19 +20,19 @@ body {
   justify-content: center;
   padding-top: 40px;
   padding-bottom: 40px;
-  background: url(../img/background.png);
+  background: url(../img/background-light.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 #titleEvent {
-  font-family: 'Great Vibes';font-size: 55px;
-  color: white;
+  font-family: 'Great Vibes';font-size: 60px;
+  color: black;
 }
 
 p {
   font-family: 'Noto Sans';
-  color: white;
+  color: black;
 }
 
 .form-signin {

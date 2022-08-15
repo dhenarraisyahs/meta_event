@@ -3,7 +3,7 @@
     <form id="CreateForm" class="form-signin">
       <div class="text-center mb-4">
         <!-- <img class="mb-4" src="logo.png" alt="" width="128" height="128"> -->
-        <h1 id="titleEvent" class="h3 mb-5 font-weight-normal">Gathering Event</h1>
+        <h1 id="titleEvent" class="h3 mb-5 font-weight-normal">Corporate <br> Town Hall <br> Event</h1>
         <p style="font-size: large;">Selamat datang,<br> silakan masukan No NIK anda.</p>
       </div>
       <input type="hidden" id="inputId" name="id"  autofocus>
@@ -15,6 +15,12 @@
 
       <div class="form-label-group mx-3">
         <button id="saveBtn" class="btn btn-lg btn-warning btn-block" type="submit">CHECK IN</button>
+      </div>
+      <div class="row justify-content-center">
+          <div class="col-6 align-content-center text-center">
+              <img src="{{ asset('img') }}/logo-gmi.png" style="height: 36px;" class="navbar-brand-img" alt="...">
+              <img src="{{ asset('img') }}/logo-indosat.png" style="height: 64px;" class="navbar-brand-img" alt="...">
+          </div>
       </div>
       <p  style="font-size: small;" class="mt-5 mb-3 text-muted text-center">&copy; 2022 Metamorfive</p>
     </form>

@@ -2,8 +2,9 @@
     <div class="container">
         <div class="header-body text-center mb-7">
             <div class="row justify-content-center">
-                <div class="col-lg-5 col-md-6">
-                    <h1 class="text-white">{{ __('ONEVENT') }}</h1>
+                <div class="col-lg-5 col-md-6 mr--5">
+                    <img src="{{ asset('img') }}/logo-gmi.png" style="height: 92px;" class="navbar-brand-img" alt="...">
+                    <img src="{{ asset('img') }}/logo-indosat.png" style="height: 140px;" class="navbar-brand-img" alt="...">
                 </div>
             </div>
         </div>

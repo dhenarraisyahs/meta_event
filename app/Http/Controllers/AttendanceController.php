@@ -6,7 +6,9 @@ use App\Models\Attendance;
 use App\Models\Participant;
 // use App\Http\Controllers\DataTables;
 use Yajra\DataTables\Contracts\DataTable;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class AttendanceController extends Controller
 {
@@ -32,21 +34,35 @@ class AttendanceController extends Controller
     {
         // dd('masuk fungsi');
         if ($request->ajax()) {
-            $data = Attendance::all();
-            // dd($data);
+
+            if (!empty($request->location_id)) {
+                $data = DB::select("SELECT c.name, c.title, c.code, b.name location, MIN(date) date
+                                FROM attendances a
+                                INNER JOIN locations b ON a.location_id = b.id
+                                INNER JOIN participants c ON a.participant_id = c.id
+                                WHERE a.location_id = ?
+                                GROUP BY c.name, c.title, c.code, b.name", [$request->location_id]);
+            } else {
+                $data = DB::select("SELECT c.name, c.title, c.code, b.name location, MIN(date) date
+                                FROM attendances a
+                                INNER JOIN locations b ON a.location_id = b.id
+                                INNER JOIN participants c ON a.participant_id = c.id
+                                GROUP BY c.name, c.title, c.code, b.name");
+                            }
+           
             return \DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('name', function ($row) {
-                    return $row->participant->name;
+                    return $row->name;
                 })
                 ->addColumn('code', function ($row) {
-                    return $row->participant->code;
+                    return $row->code;
                 })
                 ->addColumn('location', function ($row) {
-                    return $row->location->name;
+                    return $row->location;
                 })
                 ->addColumn('attendance', function ($row) {
-                    return $row->hour;
+                    return Carbon::parse($row->date)->format('d-m-Y H:i:s');
                 })
                 ->rawColumns(['action'])
                 ->make(true);
@@ -82,6 +98,11 @@ class AttendanceController extends Controller
             $participant_id = $participant->id;
         }
 
+        $is_exist = Attendance::where('participant_id',$participant_id)
+                ->first();
+        if (!empty($is_exist)) {
+            return response()->json(['success' => false, 'message' => 'Anda sudah check in sebelumnya.']);
+        }
         $attendance = Attendance::updateOrCreate(
             [
                 'id' => $request->id

@@ -50,6 +50,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('location/list', 'LocationController@data')->name('location.list');
 	Route::resource('location', 'LocationController');
 
+	Route::get('participant/statistic', 'ParticipantController@statistic')->name('participant.statistic');
 	Route::get('participant/list', 'ParticipantController@data')->name('participant.list');
 	Route::resource('participant', 'ParticipantController');
 

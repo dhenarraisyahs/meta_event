@@ -6,7 +6,7 @@
         </button>
         <!-- Brand -->
         <a class="navbar-brand pt-0" href="{{ route('home') }}">
-            <img src="{{ asset('img') }}/onevent.png" class="navbar-brand-img" alt="...">
+            <img src="{{ asset('img') }}/logo-gmi.png" class="navbar-brand-img" alt="...">
             <!-- <h1>ONEVENT</h1> -->
         </a>
         <!-- User -->
@@ -55,7 +55,7 @@
                 <div class="row">
                     <div class="col-6 collapse-brand">
                         <a href="{{ route('home') }}">
-                            <img src="{{ asset('img') }}/onevent.png">
+                            <img src="{{ asset('img') }}/logo-gmi.png">
                         </a>
                     </div>
                     <div class="col-6 collapse-close">
