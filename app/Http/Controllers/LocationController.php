@@ -38,7 +38,7 @@ class LocationController extends Controller
             return \DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    $btn = '<a href="'.url('/location/print_qr/'.$row->id).'"  class="btn btn-success btn-sm">Print QR</a>';
+                    $btn = '<a href="'.url('/location/print_qr/'.$row->id).'" target="_blank"  class="btn btn-success btn-sm">Print QR</a>';
 
                     $btn = $btn . '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary btn-sm editRecord">Ubah</a>';
 

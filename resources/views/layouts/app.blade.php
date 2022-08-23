@@ -54,6 +54,9 @@
         <script src="{{url('argon/vendor/datatables.net-buttons/js/buttons.print.min.js')}}"></script>
         <script src="{{url('argon/vendor/datatables.net-select/js/dataTables.select.min.js')}}"></script>
         
+        <!-- Highchart -->
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        
         @stack('js')
         
         <!-- Argon JS -->

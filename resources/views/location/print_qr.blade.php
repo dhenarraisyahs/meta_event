@@ -32,7 +32,7 @@
     
     <p style="text-align:center">&nbsp;</p>
 
-    <p style="text-align:center"><strong><span style="font-size:48px">Gathering Event</span></strong></p>
+    <p style="text-align:center"><strong><span style="font-size:48px">Corporate Town Hall Event</span></strong></p>
 
     <p style="text-align:center"><span style="font-size:36px">{{ $location->name }}</span></p>
 

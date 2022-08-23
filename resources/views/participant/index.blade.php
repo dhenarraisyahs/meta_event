@@ -33,10 +33,9 @@
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">No.</th>
-                                <th scope="col">Code</th>
+                                <th scope="col">NIK</th>
                                 <th scope="col">Location</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Email</th>
                                 <th scope="col">Title</th>
                             </tr>
                         </thead>
@@ -146,10 +145,6 @@
                                 {
                                     data: 'name', 
                                     name: 'name'
-                                }, 
-                                {
-                                    data: 'email', 
-                                    name: 'email'
                                 }, 
                                 {
                                     data: 'title', 

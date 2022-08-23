@@ -7,15 +7,15 @@
                 <div class="col-xl-2 col-lg-6 mb-4">
                     <a href="#" onclick="setTableTitle({{$value->id}}); setTableAttendance({{$value->id}}); return false;">
                         <div class="card card-stats mb-4 mb-xl-0">
-                            <div class="card-body">
+                            <div class="card-body m--3">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-center mb-0">{{ $value->name }}</h5>
+                                        <h5 class="card-title text-uppercase text-center mb-0 mt-2">{{ $value->name }}</h5>
                                     </div>
                                 </div>
-                                <div class="chart" style="height:160px">
+                                <div class="chart" style="height:200px">
                                     <!-- Chart wrapper -->
-                                    <canvas id="chart-attendance-{{$index}}" class="chart-canvas"></canvas>
+                                    <div id="chart-attendance-{{$index}}" style="height:200px" class="chart-canvas"></div>
                                 </div>
                             </div>
                         </div>

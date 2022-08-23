@@ -3,7 +3,7 @@
     <form class="form-signin">
       <div class="text-center mb-4">
         <!-- <img class="mb-4" src="logo.png" alt="" width="128" height="128"> -->
-        <h1 id="titleEvent" class="h5 mb-5 font-weight-normal">Gathering Event</h1>
+        <h1 id="titleEvent" class="h3 mb-5 font-weight-normal">Corporate <br> Town Hall <br> Event</h1>
         <p style="font-size: large;">Berhasil check in</p>
       </div>
 
